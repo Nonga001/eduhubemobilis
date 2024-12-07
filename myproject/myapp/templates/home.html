@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduEmobilis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --background-color: #f4f7fa;
+            --text-color: #333;
+            --card-background: #fff;
+            --logout-color: #d9534f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            line-height: 1.6;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            width: 100%;
+            background-color: var(--primary-color);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #d9534f;
+        }
+
+        /* Home Page Styles */
+        .container {
+            padding: 40px 0;
+        }
+
+        .card {
+            margin: 20px 0;
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .card-body {
+            background-color: #ffffff;
+        }
+
+        .details .row {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Dashboard Styles */
+        .dashboard-container {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dashboard-title {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .user-greeting {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .logout-btn {
+            display: inline-block;
+            background-color: var(--logout-color);
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c9302c;
+        }
+
+        .dashboard-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 480px) {
+            .navbar a {
+                margin: 0 10px;
+            }
+
+            .dashboard-container {
+                padding: 20px;
+            }
+
+            .dashboard-title {
+                font-size: 1.5rem;
+            }
+
+            .dashboard-stats {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'courses' %}">Courses</a>
+        <a href="{% url 'lecturers' %}">Lecturers</a>
+        <a href="{% url 'contacts' %}">Contacts</a>
+        <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><p class="user-greeting">Welcome Back, {{ user.username }}!</p> EduEmobilis</h1>
+                <p>Your one-stop learning platform for all your educational needs. Explore, learn, and grow with us.</p>
+
+                <!-- User Session Details -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>User Session Details</h5>
+                    </div>
+                    <div class="card-body details">
+                        <div class="row">
+                            <div class="col-md-4"><strong>Last Login:</strong></div>
+                            <div class="col-md-8">December 7, 2024 - 10:30 AM</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><strong>Session Start Time:</strong></div>
+                            <div class="col-md-8">December 7, 2024 - 10:35 AM</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4"><strong>Time Spent in Session:</strong></div>
+                            <div class="col-md-8">15 minutes</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Quick Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><a href="#">Start a New Course</a></li>
+                            <li><a href="#">View Course Progress</a></li>
+                            <li><a href="#">Check Notifications</a></li>
+                            <li><a href="#">Access Profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar (optional) -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Upcoming Courses</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li><strong>Web Development</strong> - Starts December 10, 2024</li>
+                            <li><strong>Marketing 101</strong> - Starts December 15, 2024</li>
+                            <li><strong>Copywriting Masterclass</strong> - Starts December 20, 2024</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Announcements</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>New course "Advanced Python" launching soon!</li>
+                            <li>Check your grades for the "Introduction to HTML" course.</li>
+                            <li>Don't forget to complete your profile for personalized recommendations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard-container">
+
+
+        <div class="dashboard-stats">
+            <div class="stat-item">
+                <div class="stat-value">{{ user.profile.points|default:'0' }}</div>
+                <div class="stat-label">User Points</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{{ user.date_joined|date:'M d, Y' }}</div>
+                <div class="stat-label">Member Since</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">{{ user.profile.last_activity|default:'N/A' }}</div>
+                <div class="stat-label">Last Activity</div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- Footer -->
+{#    <div class="footer">#}
+{#        <p>&copy; 2024 EduEmobilis | All rights reserved</p>#}
+{#    </div>#}
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

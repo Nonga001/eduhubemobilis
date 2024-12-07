@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lecturers - EduEmobilis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your custom styles here */
+        .lecturers-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .lecturers-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .lecturer-card {
+            width: 250px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .lecturer-card img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .back-button {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="lecturers-header">
+        <h1>Our Esteemed Lecturers</h1>
+        <p>Meet the educators who are shaping the future of our students.</p>
+    </div>
+
+    <div class="lecturers-section">
+        <!-- Sample Lecturer 1 -->
+        <div class="lecturer-card">
+            <img src="https://via.placeholder.com/120" alt="Lecturer Image">
+            <h3>Dr. John Doe</h3>
+            <p>Computer Science</p>
+            <p>Email: johndoe@example.com</p>
+        </div>
+
+        <!-- Sample Lecturer 2 -->
+        <div class="lecturer-card">
+            <img src="https://via.placeholder.com/120" alt="Lecturer Image">
+            <h3>Prof. Jane Smith</h3>
+            <p>Mathematics</p>
+            <p>Email: janesmith@example.com</p>
+        </div>
+
+        <!-- Sample Lecturer 3 -->
+        <div class="lecturer-card">
+            <img src="https://via.placeholder.com/120" alt="Lecturer Image">
+            <h3>Dr. Emily Clark</h3>
+            <p>Physics</p>
+            <p>Email: emilyclark@example.com</p>
+        </div>
+    </div>
+
+<a href="{% url 'dashboard' %}">Home</a>
+
+</body>
+
+</html>
