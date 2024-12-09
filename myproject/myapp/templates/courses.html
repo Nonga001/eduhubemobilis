@@ -1,0 +1,66 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>Available Courses</h2>
+
+    {% if is_lecturer %}
+        <p>You are a lecturer, here are the courses you manage:</p>
+
+        <!-- Add Course Button -->
+        <a href="{% url 'add_course' %}" class="btn btn-success">Add New Course</a>
+
+        <ul>
+            {% for course in courses %}
+            <li>
+                <a href="{% url 'course_detail' course.id %}">{{ course.title }}</a>
+
+                {% if course in enrolled_courses %}
+                    <!-- Unenroll Button -->
+                    <form action="{% url 'unenroll' course.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Unenroll</button>
+                    </form>
+                {% else %}
+                    <!-- Enroll Button -->
+                    <form action="{% url 'enroll' course.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </form>
+                {% endif %}
+
+                <!-- Delete Course Button -->
+                <form action="{% url 'delete_course' course.id %}" method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this course?');">Delete</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <!-- For non-lecturers, display all available courses -->
+        <ul>
+            {% for course in courses %}
+            <li>
+                <a href="{% url 'course_detail' course.id %}">{{ course.title }}</a>
+
+                {% if course in enrolled_courses %}
+                    <!-- Unenroll Button -->
+                    <form action="{% url 'unenroll' course.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Unenroll</button>
+                    </form>
+                {% else %}
+                    <!-- Enroll Button -->
+                    <form action="{% url 'enroll' course.id %}" method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Enroll</button>
+                    </form>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</div>
+{% endblock %}

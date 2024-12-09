@@ -1,0 +1,31 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+Our Lecturers
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Meet Our Lecturers</h1>
+    <p class="lead">Our platform is proud to feature a diverse and experienced group of lecturers dedicated to your success.</p>
+    <hr>
+    <section>
+        <h2>Our Team of Experts</h2>
+        <div class="row">
+            {% for lecturer in lecturers %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ lecturer.name }}</h5>
+                            <p class="card-text">{{ lecturer.bio }}</p>
+                            <p><strong>Specialization:</strong> {{ lecturer.specialization }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No lecturers are currently listed. Check back soon!</p>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+{% endblock %}

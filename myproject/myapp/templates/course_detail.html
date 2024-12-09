@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{{ course.title }}</h2>
+    <p>{{ course.description }}</p>
+
+    {% if is_enrolled %}
+        <form action="{% url 'unenroll' course.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Unenroll</button>
+        </form>
+    {% else %}
+        <form action="{% url 'enroll' course.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Enroll</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}

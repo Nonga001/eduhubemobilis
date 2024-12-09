@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Activity Log</h2>
+    {% if activities %}
+        <ul class="list-group">
+            {% for activity in activities %}
+                <li class="list-group-item">
+                    {{ activity.action }} on {{ activity.timestamp|date:"M d, Y H:i" }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No activities recorded yet.</p>
+    {% endif %}
+</div>
+{% endblock %}

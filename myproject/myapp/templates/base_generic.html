@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduHub LMS</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header class="navbar">
+        <nav class="nav-links">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'courses' %}">Courses</a></li>
+                <li><a href="{% url 'lecturers' %}">Lecturers</a></li>
+                <li><a href="{% url 'contacts' %}">Contacts</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right side with "Welcome" and Logout button -->
+        <div class="welcome-logout">
+            {% if user.is_authenticated %}
+                {% if request.path == '/home/' %}
+                    <p>Welcome to EduHub LMS, {{ user.username }}</p>
+                {% else %}
+                    <p>Welcome to EduHub LMS</p>
+                {% endif %}
+                <a href="{% url 'logout' %}" class="logout-button">Logout</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer>
+        <!-- You can add a footer here if needed -->
+    </footer>
+</body>
+</html>

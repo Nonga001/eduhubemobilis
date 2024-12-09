@@ -1,0 +1,39 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>Here are the courses you have enrolled in:</p>
+
+    <!-- Display messages here -->
+    <div class="messages">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if enrolled_courses %}
+        <ul>
+            {% for enrollment in enrolled_courses %}
+                <li>{{ enrollment.course.title }} - Enrolled on {{ enrollment.date_enrolled }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You are not enrolled in any courses yet.</p>
+    {% endif %}
+
+    <!-- Display user activities -->
+    <h3>Your Activity</h3>
+    {% if activities %}
+        <ul>
+            {% for activity in activities %}
+                <li>{{ activity.timestamp|date:"D, M d, Y H:i" }} - {{ activity.action }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No activities found.</p>
+    {% endif %}
+</div>
+{% endblock %}
