@@ -128,3 +128,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'nongashaldon@gmail.com'  # Replace with your Gmail address
 EMAIL_HOST_PASSWORD = 'mmbzebhthlkrzowb'  # Use app password if 2FA is enabled
+
+LOGIN_URL = 'login'  # Adjust this to match your login page's URL
+LOGOUT_REDIRECT_URL = 'login'  # Redirect after logout

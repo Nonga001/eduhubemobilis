@@ -24,5 +24,7 @@ urlpatterns = [
     path('courses/delete/<int:course_id>/', views.delete_course, name='delete_course'),
     path('lecturers/', views.lecturers, name='lecturers'),
     path('contacts/', views.contacts, name='contacts'),
-    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('logout/', views.logout_view, name='logout'),  # Logout URl
+
 ]
+
