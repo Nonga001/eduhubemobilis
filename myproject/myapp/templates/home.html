@@ -1,0 +1,81 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="container-fluid px-4 py-4" style="font-family: Arial, sans-serif; background-color: #f4f4f9; color: #333;">
+    <!-- Welcome Section -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card" style="border: none; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); background-color: #fff;">
+                <div class="card-body" style="padding: 20px;">
+                    <h2 style="margin: 0; color: #333;">Welcome, {{ user.username }}!</h2>
+                    <p style="color: #666; margin-top: 10px;">Here are your enrolled courses and recent activities.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Section -->
+    {% if messages %}
+    <div class="row mb-4">
+        <div class="col-12">
+            {% for message in messages %}
+                <div class="alert" style="margin-bottom: 10px; padding: 10px 15px; border-radius: 4px; background-color: #e9f5f9; color: #31708f; border-left: 5px solid #31708f;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Main Content Section -->
+    <div class="row">
+        <!-- Activities Section -->
+        <div class="col-md-6">
+            <div class="card" style="border: none; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); background-color: #fff; height: 100%;">
+                <div class="card-header" style="padding: 15px; background-color: #4caf50; color: #fff; border-radius: 8px 8px 0 0;">
+                    <h3 style="margin: 0;">Your Activity</h3>
+                </div>
+                <div class="card-body" style="padding: 20px;">
+                    {% if activities %}
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            {% for activity in activities %}
+                                <li style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+                                    <div>
+                                        <small style="color: #999;">{{ activity.timestamp|date:"D, M d, Y H:i" }}</small>
+                                        <p style="margin: 5px 0 0; color: #333;">{{ activity.action }}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p style="color: #999; text-align: center; margin: 0;">No activities found.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Enrolled Courses Section -->
+        <div class="col-md-6">
+            <div class="card" style="border: none; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); background-color: #fff; height: 100%;">
+                <div class="card-header" style="padding: 15px; background-color: #2196f3; color: #fff; border-radius: 8px 8px 0 0;">
+                    <h3 style="margin: 0;">Your Enrolled Courses</h3>
+                </div>
+                <div class="card-body" style="padding: 20px;">
+                    {% if enrolled_courses %}
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            {% for enrollment in enrolled_courses %}
+                                <li style="margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #ddd;">
+                                    <p style="margin: 0; font-weight: bold; color: #333;">{{ enrollment.course.title }}</p>
+                                    <small style="color: #999;">Enrolled on {{ enrollment.date_enrolled }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p style="color: #999; text-align: center; margin: 0;">You are not enrolled in any courses yet.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

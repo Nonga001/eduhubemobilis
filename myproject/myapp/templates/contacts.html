@@ -1,0 +1,64 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <div style="max-width: 800px; margin: 40px auto; font-family: Arial, sans-serif; color: #333;">
+      <h2 style="font-size: 2.4rem; color: #007bff; text-align: center; margin-bottom: 20px;">Contact Us</h2>
+      <p style="font-size: 1.1rem; text-align: center; margin-bottom: 30px; line-height: 1.6;">
+          We'd love to hear from you! Please fill out the form below or reach out to us via the details provided.
+      </p>
+
+      <!-- Success/Error Messages -->
+      {% if messages %}
+        <div style="margin-bottom: 20px;">
+          {% for message in messages %}
+            <div style="
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 1rem;
+                color: #fff;
+                background-color: {% if message.tags == 'success' %}#28a745{% elif message.tags == 'error' %}#dc3545{% else %}#007bff{% endif %};
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+            ">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <!-- Contact Information Section -->
+      <div style="background-color: #f1f1f1; padding: 20px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+          <h4 style="margin-bottom: 15px; color: #333; font-size: 1.5rem;">Our Office</h4>
+          <p style="margin: 5px 0; font-size: 1rem;">123 EduHub Street, Nyeri, Kenya</p>
+          <p style="margin: 5px 0; font-size: 1rem;"><strong>Phone:</strong> +254 700776085</p>
+          <p style="margin: 5px 0; font-size: 1rem;"><strong>Email:</strong> <a href="mailto:support@eduhub.com" style="color: #007bff; text-decoration: none;">support@eduhub.com</a></p>
+      </div>
+
+      <!-- Contact Form -->
+      <form action="{% url 'contacts' %}" method="POST" style="background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+          {% csrf_token %}
+          <div style="margin-bottom: 20px;">
+              <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem;">Name</label>
+              <input type="text" id="name" name="name" required
+                     style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+          </div>
+
+          <div style="margin-bottom: 20px;">
+              <label for="email" style="display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem;">Email</label>
+              <input type="email" id="email" name="email" required
+                     style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;">
+          </div>
+
+          <div style="margin-bottom: 20px;">
+              <label for="message" style="display: block; font-weight: bold; margin-bottom: 8px; font-size: 1rem;">Message</label>
+              <textarea id="message" name="message" rows="4" required
+                        style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem;"></textarea>
+          </div>
+
+          <button type="submit"
+                  style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; transition: background-color 0.3s;">
+              Send Message
+          </button>
+      </form>
+  </div>
+{% endblock %}

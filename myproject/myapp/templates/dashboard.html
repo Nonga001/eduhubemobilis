@@ -1,0 +1,43 @@
+<!-- accounts/templates/accounts/dashboard.html -->
+{% extends 'base_generic.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .btn-custom {
+            background-color: #dc3545;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #c82333;
+        }
+        .alert-custom {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+{% block content %}
+  <div class="container mt-5">
+      <h2>Welcome to Your Dashboard</h2>
+      <div class="alert alert-custom">
+          <strong>Success!</strong> You're logged in.
+      </div>
+
+      <!-- Logout button -->
+{#      <a href="{% url 'logout' %}" class="btn btn-custom">Logout</a>#}
+  </div>
+{% endblock %}
+</html>

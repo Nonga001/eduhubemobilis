@@ -1,0 +1,47 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}
+Our Lecturers
+{% endblock %}
+
+{% block content %}
+<div style="max-width: 1200px; margin: 40px auto; font-family: 'Arial', sans-serif; color: #333;">
+    <!-- Page Header -->
+    <h1 style="font-size: 2.8rem; color: #007BFF; text-align: center; margin-bottom: 20px;">Meet Our Lecturers</h1>
+    <p style="font-size: 1.2rem; color: #555; text-align: center; margin-bottom: 30px; line-height: 1.6;">
+        Our platform is proud to feature a diverse and experienced group of lecturers dedicated to your success.
+    </p>
+    <hr style="border-top: 2px solid #007BFF; margin-bottom: 40px;">
+
+    <!-- Lecturers Section -->
+    <section>
+        <h2 style="font-size: 2rem; color: #555; margin-bottom: 30px; text-align: center;">Our Team of Experts</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+            <!-- Hardcoded Lecturer 1 -->
+            <div style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+                <h5 style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">
+                    John Doe
+                </h5>
+                <p style="font-size: 1rem; color: #666; margin-bottom: 15px;">
+                    John is a seasoned lecturer with a passion for computer science and programming languages.
+                </p>
+                <p style="font-size: 1rem; font-weight: bold; color: #007BFF; margin-bottom: 0;">
+                    Specialization: Computer Science
+                </p>
+            </div>
+            <!-- Hardcoded Lecturer 2 -->
+            <div style="background-color: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; padding: 20px; width: 300px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center;">
+                <h5 style="font-size: 1.5rem; color: #333; margin-bottom: 10px;">
+                    Jane Smith
+                </h5>
+                <p style="font-size: 1rem; color: #666; margin-bottom: 15px;">
+                    Jane specializes in data science and artificial intelligence, bringing hands-on experience to the classroom.
+                </p>
+                <p style="font-size: 1rem; font-weight: bold; color: #007BFF; margin-bottom: 0;">
+                    Specialization: Data Science
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
